@@ -224,7 +224,6 @@ vim.opt.rtp:prepend(lazypath)
 --  To update plugins you can run
 --    :Lazy update
 --
--- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -786,8 +785,9 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          ['<CR>'] = cmp.mapping.confirm { select = true },
-          ['<Tab>'] = cmp.mapping.select_next_item(),
+          -- NOTE this was annoying, when typing full words and pressing enter after
+          -- ['<CR>'] = cmp.mapping.confirm { select = true },
+          -- ['<Tab>'] = cmp.mapping.select_next_item(),
 
           --['<S-Tab>'] = cmp.mapping.select_prev_item(),
           -- Manually trigger a completion from nvim-cmp.
@@ -855,7 +855,18 @@ require('lazy').setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = true },
+    vim.keymap.set('n', ']t', function()
+      require('todo-comments').jump_next()
+    end, { desc = 'Next todo comment' }),
+    vim.keymap.set('n', '[t', function()
+      require('todo-comments').jump_prev()
+    end, { desc = 'Previous todo comment' }),
+  },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
