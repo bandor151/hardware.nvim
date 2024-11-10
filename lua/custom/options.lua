@@ -63,3 +63,7 @@ vim.opt.scrolloff = 10
 
 -- Do not wrap lines that are out of window
 vim.opt.wrap = false
+
+-- Set tab width
+vim.opt.ts = 4
+vim.opt.sw = 4

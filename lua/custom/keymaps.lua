@@ -17,8 +17,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Open NeoTree' })
-vim.keymap.set('n', '<leader>E', '<cmd>Neotree action=focus<CR>', { desc = 'Open NeoTree' })
+vim.keymap.set('n', '<leader>E', '<cmd>Neotree action=focus<CR>', { desc = 'Focus NeoTree' })
 vim.keymap.set('n', '<leader>vs', '<cmd>vsplit<CR>', { desc = 'Make a vertical split' })
+vim.keymap.set('n', '<leader>g', '<cmd>AdvancedGitSearch<CR>', { desc = 'Use the advanced git search' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
